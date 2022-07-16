@@ -16,14 +16,12 @@ RUN go build -o /server
 ##
 ## Deploy
 ##
-FROM gcr.io/distroless/base-debian10
+FROM centos:7
 
 WORKDIR /
 
 COPY --from=build /server /server
 
 EXPOSE 2022
-
-USER nonroot:nonroot
 
 ENTRYPOINT ["/server"]
